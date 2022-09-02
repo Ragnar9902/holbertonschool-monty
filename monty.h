@@ -1,9 +1,15 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <ctype.h>
+
 #define DELIMITERS "\n\t\r "
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,10 +41,17 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 /*functions definitions*/
-void push(stack_t **sk, int c);
+void push(stack_t **stack, unsigned int line_number, char *n);
 void pall(stack_t **sk, unsigned int line_number);
 int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);
-/*utils funcions*/
+/* utility functions */
+size_t stack_length(stack_t **stack);
 void free_stack(stack_t **stack);
+void free_all(stack_t *stack, char *line, FILE *fp);
+/* print functions */
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 
 #endif
