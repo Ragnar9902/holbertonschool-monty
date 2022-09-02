@@ -14,6 +14,12 @@ int main(__attribute__((unused)) int argc , char **argv)
     char   *opcode = NULL;
     char   *n;
     ssize_t read;
+
+    if (argc != 2)
+	{
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
  
     /* open an existing file for reading */
     name_file = argv[1];
@@ -21,8 +27,9 @@ int main(__attribute__((unused)) int argc , char **argv)
  
     /* quit if the file does not exist */
     if(infile == NULL)
-        return 1;
-
+    {	printf("Error: Can't open file %s\n", argv[1]);
+	exit(EXIT_FAILURE);
+    }
 
     while ((read = getline(&line, &len, infile)) != -1)
 	{
