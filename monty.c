@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main()
+int main(__attribute__((unused)) int argc , char **argv)
 {
     stack_t *stack = malloc(sizeof(stack_t *));
     /* declare a file pointer */
     FILE    *infile = NULL;
+    char *name_file;
     char    *line = malloc(2000 * sizeof(char));
     size_t    len = 0;
     int    line_number = 0;
@@ -15,7 +16,8 @@ int main()
     ssize_t read;
  
     /* open an existing file for reading */
-    infile = fopen("test", "r");
+    name_file = argv[1];
+    infile = fopen(name_file, "r");
  
     /* quit if the file does not exist */
     if(infile == NULL)
