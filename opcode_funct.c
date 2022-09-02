@@ -24,5 +24,6 @@ int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number)
 			return (EXIT_SUCCESS);
 		}
 	}
+	fprintf(stderr,"L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
