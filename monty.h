@@ -42,7 +42,9 @@ typedef struct instruction_s
 } instruction_t;
 /*functions definitions*/
 void push(stack_t **stack, unsigned int line_number, char *n);
-void pall(stack_t **sk, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 int opcode_struct(char *opcode, stack_t **stack, unsigned int line_number);
 /* utility functions */
 size_t stack_length(stack_t **stack);
